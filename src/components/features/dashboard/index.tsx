@@ -5,6 +5,8 @@ import {
   ProductCard,
   StatesCard,
 } from '#/components/features/dashboard/components/statesCard'
+import DataTable from '#/components/payments/data-table'
+import { columns, data } from '#/components/payments/column'
 
 const Dashboard = () => {
   return (
@@ -16,7 +18,7 @@ const Dashboard = () => {
 
       {/* Card */}
       <div className="p-4 ">
-        <div className="grid grid-cols-4 w-full gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full gap-5">
           {ProductCard.map((item, idx) => (
             <StatesCard key={idx} item={item} />
           ))}
@@ -26,6 +28,10 @@ const Dashboard = () => {
         <div className="mt-8">
           <VisitorsChat />
         </div>
+      </div>
+
+      <div className="w-full overflow-x-auto lg:overflow-visible">
+        <DataTable columns={columns} data={data} />
       </div>
     </>
   )

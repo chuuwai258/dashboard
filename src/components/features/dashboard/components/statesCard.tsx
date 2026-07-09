@@ -43,8 +43,8 @@ export const StatesCard = ({
 }) => {
   const Icon = item.icon
   return (
-    <Card>
-      <CardContent className="space-y-1">
+    <Card >
+      <CardContent className="space-y-1 ">
         <div className="flex justify-between ">
           <p className="text-slate-600">{item.title}</p>
           <div className="flex items-center gap-1 border px-1 rounded-xl">

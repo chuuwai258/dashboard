@@ -6,7 +6,7 @@ import { Sidebar } from '../ui/sidebar'
 
 export default function AppSidebar() {
   return (
-    <Sidebar collapsible='icon'>
+    <Sidebar>
       {/* header */}
       <AppSidebarHeader />
 
