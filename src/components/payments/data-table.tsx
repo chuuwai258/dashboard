@@ -1,8 +1,4 @@
-import type {
-  ColumnDef,
-  
-  VisibilityState,
-} from '@tanstack/react-table'
+import type { ColumnDef, VisibilityState } from '@tanstack/react-table'
 import {
   flexRender,
   getCoreRowModel,
@@ -38,11 +34,10 @@ interface DataTableProps<TData, TValue> {
 export default function DataTable<TData, TValue>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {  
+}: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
- 
 
   const table = useReactTable({
     data,
@@ -61,7 +56,7 @@ export default function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="flex items-center py-4 px-4 gap-5 overflew-x-auto">
+      <div className="flex flex-col lg:flex-row items-center justify-between py-4 px-4 gap-5">
         <Tabs defaultValue="outline">
           <TabsList className="bg-muted rounded-lg">
             <TabsTrigger value="outline">Outline</TabsTrigger>
@@ -83,41 +78,44 @@ export default function DataTable<TData, TValue>({
             <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
           </TabsList>
         </Tabs>
-        
+
         {/* Customize Columns */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              <SidebarTrigger />
-              Customize Cloumns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Button variant="outline">
-          <Plus />
-          Add Section
-        </Button>
+        <div className='flex gap-5'>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                <SidebarTrigger />
+                Customize Cloumns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  )
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button variant="outline">
+            <Plus />
+            Add Section
+          </Button>
+        </div>
       </div>
-      <div className="overflow-hidden rounded-md border mx-4">
+
+      <div className="overflow-x-auto rounded-md border mx-4">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -167,7 +165,6 @@ export default function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      
     </>
   )
 }

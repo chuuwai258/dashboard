@@ -150,7 +150,7 @@ export default function ChartAreaInteractive() {
 
   return (
     <Card className="pt-0">
-      <CardHeader className="flex items-center justify-between space-y-0 border-b py-5 sm:flex-row">
+      <CardHeader className="flex flex-col md:flex-col lg:flex-row items-center justify-between space-y-0 border-b py-5">
         <div className="grid flex-1 gap-1">
           <CardTitle>Area Chart - Interactive</CardTitle>
           <CardDescription>
