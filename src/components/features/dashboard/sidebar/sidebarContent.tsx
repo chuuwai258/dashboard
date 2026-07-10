@@ -1,5 +1,5 @@
 import { SidebarContent, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../../ui/sidebar'
-import { BarChart3, Bot, CircleGaugeIcon, CircleHelp, CirclePlus, ClipboardClock, Database, FileText, Folder, ListTodo, Mail, MoreHorizontal, Search, Settings, Users } from 'lucide-react'
+import { BarChart3, Bot, CircleGaugeIcon, CircleHelp, CirclePlus, ClipboardClock, Database, Folder, ListTodo, Mail, MoreHorizontal, Search, Settings, Users } from 'lucide-react'
 const dashboardItems = [
   { name: 'Dashboard', url: '/dashboard', icon: CircleGaugeIcon },
   { name: 'Lifecycle', url: '/lifecycle', icon: ListTodo },
@@ -24,7 +24,7 @@ const AppSidebarContent = () => {
   return (
     <>
     <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup >
           <div className="flex items-center gap-3">
             <div className="flex flex-1 items-center gap-2 rounded-lg bg-black text-white px-3 py-1.5 hover:bg-black/80">
               <CirclePlus className="size-6" />

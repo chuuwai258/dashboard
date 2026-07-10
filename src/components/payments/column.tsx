@@ -8,9 +8,8 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { Button } from '../ui/button'
-import { Check, MoreHorizontal } from 'lucide-react'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Spinner } from '../ui/spinner'
+import { Check, Loader, MoreHorizontal } from 'lucide-react'
+import { Checkbox } from '../ui/checkbox'
 
 export type Payment = {
   id: string
@@ -113,41 +112,37 @@ export const data: Payment[] = [
     limit: 18,
     reviewer: 'Noah Williams',
   },
-
 ]
 
 export const columns: ColumnDef<Payment>[] = [
   {
-    id: "select",
+    id: 'select',
     header: ({ table }) => (
       <Checkbox
         checked={
           table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
+          (table.getIsSomePageRowsSelected() && 'indeterminate')
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
+    cell: ({ row }) => {
+      return (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      )
+    },
     enableSorting: false,
     enableHiding: false,
   },
 
   {
     accessorKey: 'header',
-    header: () => (
-      <Button variant="ghost">
-        Header
-      </Button>
-
-    ),
+    header: () => <Button variant="ghost">Header</Button>,
   },
   {
     accessorKey: 'sectionType',
@@ -175,17 +170,14 @@ export const columns: ColumnDef<Payment>[] = [
           inline-flex items-center gap-1.5
           rounded-full border border-gray-200 bg-white
           px-3 py-1 text-xs font-medium
-          ${status === "In Process"
-              ? "text-gray-600"
-              : "text-gray-700"
-            }
+          ${status === 'In Process' ? 'text-gray-600' : 'text-gray-700'}
         `}
         >
-          {status === "In Process" ? (
-            <Spinner className="size-3 text-gray-500" />
+          {status === 'In Process' ? (
+            <Loader className="size-3 text-gray-500 animate-spin" />
           ) : (
-            <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-green-500">
-              <Check className="h-2.5 w-2.5 text-white" />
+            <span className="flex h-3 w-3 items-center justify-center rounded-full bg-green-500">
+              <Check className="h-2 w-2 text-white" />
             </span>
           )}
 
@@ -205,9 +197,8 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: 'reviewer',
-    header: 'Reviewr',
+    header: 'Reviewer',
   },
-
   {
     id: 'actions',
     enableHiding: false,

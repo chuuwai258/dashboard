@@ -47,7 +47,6 @@ export default function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
-
     state: {
       columnVisibility,
       rowSelection,
@@ -56,6 +55,7 @@ export default function DataTable<TData, TValue>({
 
   return (
     <>
+      
       <div className="flex flex-col lg:flex-row items-center justify-between py-4 px-4 gap-5">
         <Tabs defaultValue="outline">
           <TabsList className="bg-muted rounded-lg">
@@ -80,7 +80,7 @@ export default function DataTable<TData, TValue>({
         </Tabs>
 
         {/* Customize Columns */}
-        <div className='flex gap-5'>
+        <div className="flex gap-5">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="ml-auto">
@@ -164,6 +164,11 @@ export default function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="flex-1 text-sm text-muted-foreground p-5">
+        {table.getFilteredSelectedRowModel().rows.length} of{' '}
+        {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
     </>
   )

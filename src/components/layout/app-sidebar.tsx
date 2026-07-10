@@ -1,4 +1,3 @@
-
 import AppSidebarHeader from '../features/dashboard/sidebar/sidebarHeader'
 import AppSidebarContent from '../features/dashboard/sidebar/sidebarContent'
 import AppSidebarFooter from '../features/dashboard/sidebar/sidebarFooter'
@@ -11,10 +10,10 @@ export default function AppSidebar() {
       <AppSidebarHeader />
 
       {/* Content */}
-      <AppSidebarContent/>
+      <AppSidebarContent />
 
       {/* footer */}
-      <AppSidebarFooter/>
+      <AppSidebarFooter />
     </Sidebar>
   )
 }
